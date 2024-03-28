@@ -1,4 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
+  function capitalizeFirstChar(str) {
+    if (!str) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  function formatDate(userFriendlyDate) {
+    const date = new Date(userFriendlyDate);
+
+    const options = {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    };
+
+    return date.toLocaleDateString("en-GB", options);
+  }
   // membuat instance dari objek task
   const myTasks = new Task();
 
@@ -17,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("beberapa task tersedia dan siap ditampilkan");
 
       existingTasks.forEach((task) => {
+        const userFriendlyDate = formatDate(task.createdAt);
+
         const itemTask = document.createElement("div");
         itemTask.className =
           "flex justify-between bg-white p-5 w-full rounded-3xl";
@@ -28,12 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="img/icons/ghost.svg" alt="icon">
                 </div>
                 <div class="flex flex-col">
-                    <p class="font-bold text-lg leading-[27px]">${
+                    <p class="font-bold text-lg leading-[27px]">${capitalizeFirstChar(
                       task.taskName
-                    }</p>
-                    <p class="text-sm leading-[21px] text-taskia-grey">Created at ${
-                      task.createdAt
-                    }</p>
+                    )}</p>
+                    <p class="text-sm leading-[21px] text-taskia-grey">Created at ${userFriendlyDate}</p>
                 </div>
             </div>
             <div class="flex gap-4 font-semibold text-sm leading-[21px]">
