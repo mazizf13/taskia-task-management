@@ -7,16 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   userForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const userData = {
-      username: document.getElementById("username").value,
-    };
+    const usernameByInput = document.getElementById("username").value;
 
-    const result = userManager.saveUser(userData);
+    const result = userManager.signInUser(usernameByInput);
 
     if (result.success) {
-      return (window.location.href = "../signin.html");
+      alert("succes loggedin");
+      // return (window.location.href = "../signin.html");
     } else {
-      console.log("proses simpan data gagal");
+      console.log(result.message);
     }
   });
 });
