@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="img/icons/ghost.svg" alt="icon">
                 </div>
                 <div class="flex flex-col">
-                    <p class="font-bold text-lg leading-[27px]">Install Figma on Windows Server</p>
-                    <p class="text-sm leading-[21px] text-taskia-grey">Created at 22 Agustus 2024</p>
+                    <p class="font-bold text-lg leading-[27px]">${task.taskName}</p>
+                    <p class="text-sm leading-[21px] text-taskia-grey">Created at ${task.createdAt}</p>
                 </div>
             </div>
             <div class="flex gap-4 font-semibold text-sm leading-[21px]">
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="flex shrink-0 w-5 h-5">
                         <img src="img/icons/layer.svg" alt="icon">
                     </div>
-                    <p>High</p>
+                    <p>${task.taskPriority}</p>
                 </div>
                 <div class="flex gap-1 items-center">
                     <div class="flex shrink-0 w-5 h-5">
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="#"
                 class="flex gap-[10px] justify-center items-center text-white p-[12px_20px] h-12 font-semibold bg-gradient-to-b from-[#977FFF] to-[#6F4FFF] rounded-full w-full border border-taskia-background-grey">Complete</a>
         </div>`;
-        
+
         taskWrapper.appendChild(itemTask);
       });
     }
